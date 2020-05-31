@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-
+const genMarkdown = require("./utils/generateMarkdown");
 
 
 
@@ -62,17 +62,22 @@ const questions = [
 
 ];
 
-console.log(questions);
+//console.log(questions);
 
 
 
-
-
-function writeToFile(fileName, data) {
+const writeToFile = async(fileName, data) => { 
+    const content = genMarkdown(data);
+    await fs.writeToFile(filename, content);
 }
 
-function init() {
-
+ async function init() {
+     try {
+         const userInput = await inquirer.prompt(questions);
+         await writeToFile ("README.md", userInput);
+     } catch (err) {
+         console.log(err);
+     }
 }
 
 init();
