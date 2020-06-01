@@ -64,9 +64,9 @@ const questions = [
 
 
 
-const writeToFile = async(fileName, data) => { 
+const writeToFile = async(fileName, data) => {
     const content = genMarkdown(data);
-    await fs.writeToFile(fileName, content);
+    await fs.writeFile(fileName, content);
 }
 
  async function init() {
@@ -76,6 +76,8 @@ const writeToFile = async(fileName, data) => {
      } catch (err) {
          console.log(err);
      }
+
+    
 }
 
 init();
