@@ -1,8 +1,6 @@
 const inquirer = require("inquirer");
 const genMarkdown = require("./utils/generateMarkdown");
-
-
-
+const fs = require("fs");
 
 
 
@@ -68,7 +66,7 @@ const questions = [
 
 const writeToFile = async(fileName, data) => { 
     const content = genMarkdown(data);
-    await fs.writeToFile(filename, content);
+    await fs.writeToFile(fileName, content);
 }
 
  async function init() {
